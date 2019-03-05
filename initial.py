@@ -18,8 +18,10 @@ if __name__ == '__main__':
             os.mkdir(data_dir)
             print('file mode done!')
     elif mode == 'db':
-        Base.metadata.drop_all(eng)  # 删除表
-        Base.metadata.create_all(eng)  # 建立表
-        print("db mode done!")
+        check = input("NOTICE: tables in the schema will be dropped after this operation. If you do not want to drop tables, use 'python create_all.py' instead. Are you sure to continue? (y/n)")
+        if check == 'Y' or check == 'y' : 
+            Base.metadata.drop_all(eng)  # 删除表
+            Base.metadata.create_all(eng)  # 建立表
+            print("db mode done!")
     else:
         print("wrong mode, run by use arg db or file!")
