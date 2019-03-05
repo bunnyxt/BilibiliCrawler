@@ -120,3 +120,5 @@ logs/*
 code_history/*
 *.out
 
+# macOS
+.DS_Store
