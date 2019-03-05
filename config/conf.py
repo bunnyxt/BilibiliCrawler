@@ -12,7 +12,8 @@ def get_db_args():
     """
     获取数据库配置信息
     """
-    return dict(CONFIG.items('db_postgresql'))
+    # return dict(CONFIG.items('db_postgresql')) # use postgresql
+    return dict(CONFIG.items('db_mysql')) # use mysql
 
 def get_user_agents(filename=UA_PATH):
     ualist = []

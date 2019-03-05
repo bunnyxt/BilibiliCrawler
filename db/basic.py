@@ -9,7 +9,8 @@ from config import get_db_args
 
 def get_engine():
     kwargs = get_db_args()
-    connect_str = "postgresql+psycopg2://{}:{}@{}:{}/{}".format(kwargs['user'], kwargs['password'], kwargs['host'], kwargs['port'], kwargs['dbname'])
+    # connect_str = "postgresql+psycopg2://{}:{}@{}:{}/{}".format(kwargs['user'], kwargs['password'], kwargs['host'], kwargs['port'], kwargs['dbname']) # postgresql
+    connect_str = "mysql+pymysql://{}:{}@{}:{}/{}?charset=utf8".format(kwargs['user'], kwargs['password'], kwargs['host'], kwargs['port'], kwargs['dbname']) # mysql
     engine = create_engine(connect_str, encoding='utf-8')
     return engine
 
