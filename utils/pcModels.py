@@ -88,6 +88,7 @@ class Consumer(Thread):
                 index, data = self._queue.get()
                 if index is None or data is None:  # 任务结束标记
                     break
-                self._func(index, data, session=self._session, csvwriter=self._csvwriter)
+                # self._func(index, data, session=self._session, csvwriter=self._csvwriter) # error here
+                self._func(aid=data, session=self._session, csvwriter=self._csvwriter)
 
                 # print('[-] consumed %s_%s\n' % (index, data))
