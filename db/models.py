@@ -125,3 +125,65 @@ class BiliVideoAjaxInfo(Base):
 
     def __repr__(self):
         return "<BiliVideoAjax(aid=%s,mid=%s)>" % (self.aid, self.mid)
+
+class TddFocusVideo(Base):
+    """Tdd Focus Video"""
+    __tablename__ = 'tdd_focus_video'
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    added = Column(Integer)
+    mid = Column(String(20))
+    aid = Column(String(20), unique=True)
+    tid = Column(String(10), default='')
+    cid = Column(Integer)
+    typename = Column(String(20), default='')
+    arctype = Column(String(20), default='')
+    title = Column(String(100), default='')
+    pic = Column(String(100),default='')
+    pages = Column(Integer)
+    created = Column(Integer)
+    #view = Column(String(20))
+    #danmaku = Column(Integer)
+    #reply = Column(Integer)
+    #favorite = Column(Integer)
+    #coin = Column(Integer)
+    #share = Column(Integer)
+    #now_rank = Column(Integer)
+    #his_rank = Column(Integer)
+    #like = Column(Integer)
+    #no_reprint = Column(Integer)
+    copyright = Column(Integer)
+
+    def __repr__(self):
+        return "<TddFocusVideo(aid=%s,mid=%s)>" % (self.aid, self.mid)
+
+class TddFocusVideoRecord(Base):
+    """Tdd Focus Video Record"""
+    __tablename__ = 'tdd_focus_video_record'
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    added = Column(Integer)
+    #mid = Column(String(20))
+    aid = Column(String(20))
+    #tid = Column(String(10), default='')
+    #cid = Column(Integer)
+    #typename = Column(String(20), default='')
+    #arctype = Column(String(20), default='')
+    #title = Column(String(100), default='')
+    #pic = Column(String(100),default='')
+    #pages = Column(Integer)
+    #created = Column(Integer)
+    view = Column(String(20))
+    danmaku = Column(Integer)
+    reply = Column(Integer)
+    favorite = Column(Integer)
+    coin = Column(Integer)
+    share = Column(Integer)
+    #now_rank = Column(Integer)
+    #his_rank = Column(Integer)
+    like = Column(Integer)
+    #no_reprint = Column(Integer)
+    #copyright = Column(Integer)
+
+    def __repr__(self):
+        return "<TddFocusVideoRecord(aid=%s,mid=%s)>" % (self.aid, self.mid)

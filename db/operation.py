@@ -44,3 +44,10 @@ class DBOperation():
         except (SqlalchemyIntegrityError, pgIntegrityError, PymysqlIntegrityError, InvalidRequestError):
             for data in datas:
                 cls.add(data, db_session)
+
+    @classmethod
+    @db_commit_decorator
+    def query(cls, table, db_session):
+        #db_session = Session()
+        return db_session.query(table).all()
+        

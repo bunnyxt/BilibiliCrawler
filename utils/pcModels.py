@@ -10,6 +10,35 @@ import random
 from threading import Thread
 from db import BiliUserInfo, BiliVideoInfo, BiliVideoList
 
+class Producer3(Thread):
+    """生产者"""
+    def __init__(self, queue, video_aids, func, sleepsec=0.3, cthread_num=10):
+        """queue：队列
+        start,end:生产起止编号]
+        video_aids: 需要更新的aid列表
+        cthread_num: 消费者线程终止标记个数
+        """
+
+        super(Producer3, self).__init__()
+        self._queue = queue
+        self._range = video_aids
+        self._sleepsec = random.uniform(sleepsec, sleepsec * 2)
+        self._cthread_num = cthread_num
+        self._func = func 
+    
+    def run(self):
+        for index in self._range:
+            plist = self._func(index)
+            if plist:
+                for pitem in plist:
+                    self._queue.put((index, pitem))
+                    # print('[+] produce %s_%s' % (index, pitem))
+
+                    time.sleep(self._sleepsec)
+        time.sleep(10)
+        for _ in range(self._cthread_num):
+            self._queue.put((self._range[1], None))  # 结束任务标记
+
 
 class Producer2(Thread):
     """生产者"""
