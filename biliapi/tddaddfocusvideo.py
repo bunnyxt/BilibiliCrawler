@@ -81,7 +81,7 @@ class TddAddFocusVideo():
         try:
             if text['code'] == 0:
                 data = text['data']
-                ajax_info = (data['copyright'], 0)
+                ajax_info = (data['copyright'], )
                 return ajax_info
 
             else:
@@ -101,7 +101,6 @@ class TddAddFocusVideo():
         info_ajax = cls(aid).getAjaxInfo()
         try:
             info = info_basic + info_ajax
-            info = info[0:-1]
         except Exception as e:
             info = None
         return info
@@ -110,7 +109,7 @@ class TddAddFocusVideo():
     def store_video(cls, aid, session=None, csvwriter=None):
         """session, csvwriter 二选一都没有直接打印"""
         info = cls.getVideoInfo(aid)
-        print(info)
+        # print(info)
         if info:
             print(dict(zip(cls.field_keys, info)))
             new_video = TddFocusVideo(**dict(zip(cls.field_keys, info)))

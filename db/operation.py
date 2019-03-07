@@ -27,11 +27,15 @@ class DBOperation():
     @classmethod
     @db_commit_decorator
     def add(cls, data, db_session):
-        # db_session = Session()
-        db_session.add(data)
-        
-        db_session.commit()
-        # db_session.close()
+        try:
+            # db_session = Session()
+
+            db_session.add(data)
+
+            db_session.commit()
+            # db_session.close()
+        except Exception as e:
+            print(e)
 
     @classmethod
     @db_commit_decorator

@@ -77,11 +77,11 @@ class TddUpdateFocusVideo():
     def store_video(cls, aid, session=None, csvwriter=None):
         """session, csvwriter 二选一都没有直接打印"""
         info = cls.getVideoInfo(aid)
-        print(info)
+        #print(info)
         if info:
             new_video = TddFocusVideoRecord(**dict(zip(cls.field_keys, info)))
             if session:
-                print("update av%d with %d views at %s" % (info[1], info[2], time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(info[0]))))
+                print("update av%s with %d views at %s" % (info[1], info[2], time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(info[0]))))
                 DBOperation.add(new_video, session)
                 return True
             elif csvwriter:

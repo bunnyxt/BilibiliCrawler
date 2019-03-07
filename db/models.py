@@ -186,4 +186,4 @@ class TddFocusVideoRecord(Base):
     #copyright = Column(Integer)
 
     def __repr__(self):
-        return "<TddFocusVideoRecord(aid=%s,mid=%s)>" % (self.aid, self.mid)
+        return "<TddFocusVideoRecord(aid=%s,view=%s)>" % (self.aid, self.view)

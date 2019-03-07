@@ -5,6 +5,7 @@ tdd update focus video
 import sys
 import csv
 import os
+import  time
 import schedule
 import datetime
 from queue import Queue
@@ -80,9 +81,11 @@ def crawl2csv(filename, start, end):
 '''
 
 
+
+
 if __name__ == '__main__':
 
-    schedule.every(1).minutes.do(crawl2db(Session))
+    schedule.every(1).minutes.do(crawl2db, Session)
     
     while True:
         schedule.run_pending()
